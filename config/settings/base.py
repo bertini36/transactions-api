@@ -29,11 +29,10 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 # ------------------------------------------------------------------------------
 SECRET_KEY = env(
     'DJANGO_SECRET_KEY',
-    default='transactions_api#(0lc-$-v5xx$^jum#)tyw3$i6%m#5g-1h2m8!in(=-79!7quz'
+    default='transactions_api#(0lc-$-v5xx$^jum#)tyw3$i6%m#5g-1h2m8!in(=-79!7quz',
 )
 
 INSTALLED_APPS = [
-
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,10 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-
     # Own apps
-    'src.transactions'
-
+    'src.transactions',
 ]
 
 # MIDDLEWARE CONFIGURATION
@@ -140,7 +137,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
-                'django.contrib.messages.context_processors.messages'
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -155,9 +152,7 @@ STATIC_ROOT = str(BASE_DIR('staticfiles'))
 STATIC_URL = '/static/'
 
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = (
-    str(APPS_DIR.path('static')),
-)
+STATICFILES_DIRS = (str(APPS_DIR.path('static')),)
 
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = (

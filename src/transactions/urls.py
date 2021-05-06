@@ -1,5 +1,3 @@
 app_name = 'transactions'
 
-urlpatterns = [
-
-]
+urlpatterns = []
