@@ -1,0 +1,14 @@
+# Intellij idea
+.idea
+
+# Python
+.direnv
+*.pyc
+
+# Environment
+.env
+
+# pytest
+.cache
+.pytest_cache
+results.xml
