@@ -1,8 +1,11 @@
 from csv import reader
 
+import structlog
 from django.core.management import BaseCommand
 
 from ...actions import create_transactions
+
+logger = structlog.get_logger()
 
 
 class Command(BaseCommand):
@@ -21,8 +24,14 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
+        csv_file = options['csv_file']
+        logger.info('load-transactions-csv', csv_file=csv_file)
         with open(options['csv_file'], 'r') as read_obj:
             csv_reader = reader(read_obj)
             next(csv_reader)  # Ignore header
             raw_transactions = list(csv_reader)
-        create_transactions(raw_transactions)
+
+        transactions = create_transactions(raw_transactions)
+        logger.info(
+            'load-transactions-csv', created_transactions=len(transactions)
+        )
