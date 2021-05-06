@@ -4,7 +4,7 @@ from .models import Transaction
 
 
 class TransactionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('date', 'account', 'amount')
 
 
 admin.site.register(Transaction, TransactionAdmin)
