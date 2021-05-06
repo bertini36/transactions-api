@@ -78,6 +78,10 @@ collectstatic: ## 🗿️ Collect statics
 	@echo "🗿 Collect statics"
 	@docker-compose run --rm --user=${UID} --entrypoint python transactions-api manage.py collectstatic
 
+load-transactions-csv: 	## Load transactions CSV
+	@echo "Load transactions CSV"
+	@docker-compose run --rm --entrypoint sh transactions-api -c "python manage.py load_transactions_csv $(args)"
+
 help: ## 📖 Show make targets
 	@echo "📖 Help"
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {sub("\\\\n",sprintf("\n%22c"," "), $$2);printf " \033[36m%-20s\033[0m  %s\n", $$1, $$2}' $(MAKEFILE_LIST)

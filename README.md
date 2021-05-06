@@ -17,7 +17,8 @@ balances.
 * Run the server: `make up`
 
 ### Commands
-TODO
+
+* `make load-transactions-csv [args="--csv-file 'path/to/file.csv'"]`
 
 ### 👩‍💻 API endpoints
 TODO
