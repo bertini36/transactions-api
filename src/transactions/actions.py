@@ -44,7 +44,13 @@ def get_monthly_balances() -> List[dict]:
     return list(balances)
 
 
-def get_monthly_balance(account: int) -> List[dict]:
-    balances = Transaction.objects.monthly_balance(account=account)
+def get_monthly_balance(
+    account: int, year: int = None, month: int = None
+) -> List[dict]:
+    balances = Transaction.objects.monthly_balance(
+        account=account,
+        year=year,
+        month=month
+    )
     balances = delete_key(balances, 'date__month')
     return list(balances)

@@ -30,4 +30,9 @@ urlpatterns = [
         get_account_monthly_balances_view,
         name='get-account-monthly-balances',
     ),
+    path(
+        r'monthly/balances/<int:account>/<int:year>/<int:month>',
+        get_account_monthly_balances_view,
+        name='get-account-monthly-balance',
+    ),
 ]

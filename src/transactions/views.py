@@ -5,8 +5,8 @@ from rest_framework.response import Response
 from .actions import (
     get_annual_balance,
     get_annual_balances,
-    get_monthly_balances,
     get_monthly_balance,
+    get_monthly_balances,
 )
 
 
@@ -31,6 +31,8 @@ def get_monthly_balances_view(request: Request) -> Response:
 
 
 @api_view(['GET'])
-def get_account_monthly_balances_view(request: Request, account: int) -> Response:
-    balances = get_monthly_balance(account)
+def get_account_monthly_balances_view(
+    request: Request, account: int, year: int = None, month: int = None
+) -> Response:
+    balances = get_monthly_balance(account, year, month)
     return Response(balances)
