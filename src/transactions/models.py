@@ -3,9 +3,15 @@ from django.db.models import QuerySet, Sum
 
 
 class TransactionQuerySet(models.QuerySet):
-    def account_balances(self, year: int) -> QuerySet:
+    def balances(self, account: int = None, year: int = None) -> QuerySet:
+        kwargs = {}
+        if account:
+            kwargs['account'] = account
+        if year:
+            kwargs['date__year'] = year
+
         return (
-            self.filter(date__year=year)
+            self.filter(**kwargs)
             .values('account')
             .order_by('account')
             .annotate(balance=Sum('amount'))

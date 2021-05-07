@@ -1,9 +1,8 @@
 from datetime import date
 
-from django.conf import settings
 from django.test import TestCase
 
-from ..actions import create_transactions, get_balances
+from ..actions import create_transactions, get_balance, get_balances
 from ..models import Transaction
 
 
@@ -33,22 +32,10 @@ class CreateTransactionsActionTest(TestCase):
         self.assertEqual(len(transactions), 0)
 
 
-class GetBalancesByAccountActionTest(TestCase):
-    def test_balance_is_calculated_right_for_one_account(self):
-        Transaction.objects.bulk_create(
-            [
-                Transaction(date=date(2021, 1, 1), account=1, amount=10),
-                Transaction(date=date(2021, 1, 1), account=1, amount=-10),
-            ]
-        )
-
-        balances = get_balances(2021)
-
-        self.assertEqual(balances[0]['balance'], 0)
-
-    def test_multiple_balance_are_returned_when_multiple_accounts_registered(
+class GetBalancesActionTest(TestCase):
+    def test_multiple_balances_are_returned_when_multiple_accounts_registered(
         self,
-    ):  # noqa
+    ):
         Transaction.objects.bulk_create(
             [
                 Transaction(date=date(2021, 1, 1), account=1, amount=10),
@@ -71,3 +58,31 @@ class GetBalancesByAccountActionTest(TestCase):
         balances = get_balances(2020)
 
         self.assertEqual(len(balances), 0)
+
+
+class GetBalanceActionTest(TestCase):
+    def test_balance_is_calculated_right_for_one_account_and_specific_year(
+        self
+    ):
+        Transaction.objects.bulk_create(
+            [
+                Transaction(date=date(2020, 1, 1), account=1, amount=10),
+                Transaction(date=date(2021, 1, 1), account=1, amount=10),
+            ]
+        )
+
+        balance = get_balance(account=1, year=2021)
+
+        self.assertEqual(balance[0]['balance'], 10)
+
+    def test_an_historic_balance_is_calculated_when_no_year_is_specified(self):
+        Transaction.objects.bulk_create(
+            [
+                Transaction(date=date(2021, 1, 1), account=1, amount=10),
+                Transaction(date=date(2020, 1, 1), account=1, amount=-10),
+            ]
+        )
+
+        balance = get_balance(account=1)
+
+        self.assertEqual(balance[0]['balance'], 0)

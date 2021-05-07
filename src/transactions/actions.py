@@ -27,6 +27,11 @@ def create_transactions(raw_transactions: List[List]) -> QuerySet:
     return transactions
 
 
-def get_balances(year: int):
-    balances = Transaction.objects.account_balances(year)
+def get_balances(year: int = None):
+    balances = Transaction.objects.balances(year=year)
     return balances
+
+
+def get_balance(account: int, year: int = None):
+    balance = Transaction.objects.balances(account=account, year=year)
+    return balance
