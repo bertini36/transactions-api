@@ -3,9 +3,7 @@ from django.db.models import QuerySet, Sum
 
 
 class TransactionQuerySet(models.QuerySet):
-    def annual_balance(
-        self, account: int = None, year: int = None
-    ) -> QuerySet:
+    def annual_balance(self, account: int = None, year: int = None) -> QuerySet:
         kwargs = {}
         if account:
             kwargs['account'] = account

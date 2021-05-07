@@ -5,7 +5,7 @@ from django.test import TestCase
 from ..actions import (
     create_transactions,
     get_annual_balances,
-    get_annual_balance
+    get_annual_balance,
 )
 from ..models import Transaction
 
@@ -66,7 +66,7 @@ class GetBalancesActionTest(TestCase):
 
 class GetBalanceActionTest(TestCase):
     def test_balance_is_calculated_right_for_one_account_and_specific_year(
-        self
+        self,
     ):
         Transaction.objects.bulk_create(
             [
