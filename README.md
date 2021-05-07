@@ -23,7 +23,8 @@ or from
 * http://127.0.0.1/admin/transactions/uploadedcsvfile/add/
 
 ### Transactions queries
-TODO
+
+* Get a full year balance by account: http://127.0.0.1/balances/by/account/2020/
 
 ### ✅ Tests execution
 

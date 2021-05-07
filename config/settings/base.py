@@ -166,3 +166,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # THIRD PARTY APPLICATIONS
 # ******************************************************************************
+
+# PROJECT SPECIFIC
+# ******************************************************************************
+DEFAULT_YEAR = 2021
