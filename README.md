@@ -24,7 +24,7 @@ or from
 
 ### Transactions queries
 
-* Get a full year balance by account: http://127.0.0.1/balances/by/account/2020/
+* Get a full year balance by account: http://127.0.0.1/balances/all/2020/
 
 ### ✅ Tests execution
 
