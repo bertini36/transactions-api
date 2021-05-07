@@ -31,8 +31,8 @@ or from
 * Get a full year balance for a specific account: http://127.0.0.1/annual/balances/10000000/2020/
 * Get monthly balances by account: http://127.0.0.1/monthly/balances/all/
 * Get monthly balance for a specific account: http://127.0.0.1/monthly/balances/10000000/
-* Get the monthly balance for a specific month by account: http://127.0.0.1/monthly/balances/10000000/2020/3/
-
+* Get the monthly balance for a specific month by account: 
+* Get the monthly balance for a specific month and a specific account: http://127.0.0.1/monthly/balances/10000000/2020/3/
 ### ✅ Tests execution
 
 - Run tests: `make tests`

@@ -4,7 +4,6 @@ from django.test import TestCase
 
 from ..actions import (
     create_transactions,
-    get_annual_balance,
     get_annual_balances,
     get_monthly_balances,
 )
@@ -48,7 +47,7 @@ class GetAnnualBalancesActionTest(TestCase):
             ]
         )
 
-        balances = get_annual_balances(2021)
+        balances = get_annual_balances(year=2021)
 
         self.assertEqual(len(balances), 2)
 
@@ -60,12 +59,10 @@ class GetAnnualBalancesActionTest(TestCase):
             ]
         )
 
-        balances = get_annual_balances(2020)
+        balances = get_annual_balances(year=2020)
 
         self.assertEqual(len(balances), 0)
 
-
-class GetAnnualBalanceActionTest(TestCase):
     def test_balance_is_calculated_right_for_one_account_and_specific_year(
         self,
     ):
@@ -76,7 +73,7 @@ class GetAnnualBalanceActionTest(TestCase):
             ]
         )
 
-        balance = get_annual_balance(account=1, year=2021)
+        balance = get_annual_balances(account=1, year=2021)
 
         self.assertEqual(balance[0]['balance'], 10)
 
@@ -88,7 +85,7 @@ class GetAnnualBalanceActionTest(TestCase):
             ]
         )
 
-        balance = get_annual_balance(account=1)
+        balance = get_annual_balances(account=1)
 
         self.assertEqual(balance[0]['balance'], 0)
 
@@ -108,9 +105,22 @@ class GetMonthlyBalances(TestCase):
 
         self.assertEqual(len(balances), 2)
 
-
-class GetMonthlyBalance(TestCase):
     def test_account_monthly_balances_are_calculated_right(self):
+        Transaction.objects.bulk_create(
+            [
+                Transaction(date=date(2021, 2, 1), account=1, amount=10),
+                Transaction(date=date(2021, 1, 1), account=1, amount=20),
+                Transaction(date=date(2021, 1, 2), account=1, amount=20),
+            ]
+        )
+
+        balances = get_monthly_balances(account=1)
+
+        self.assertEqual(len(balances), 2)
+        self.assertEqual(balances[0]['balance'], 40)
+        self.assertEqual(balances[1]['balance'], 10)
+
+    def test_get_an_specific_account_monthly_balance(self):
         Transaction.objects.bulk_create(
             [
                 Transaction(date=date(2021, 1, 1), account=1, amount=10),
@@ -120,9 +130,7 @@ class GetMonthlyBalance(TestCase):
             ]
         )
 
-        balances = get_monthly_balances()
+        balances = get_monthly_balances(account=1, year=2021, month=1)
 
-        self.assertEqual(len(balances), 3)
+        self.assertEqual(len(balances), 1)
         self.assertEqual(balances[0]['balance'], 10)
-        self.assertEqual(balances[1]['balance'], -10)
-        self.assertEqual(balances[2]['balance'], 40)
