@@ -2,7 +2,11 @@ from datetime import date
 
 from django.test import TestCase
 
-from ..actions import create_transactions, get_balance, get_balances
+from ..actions import (
+    create_transactions,
+    get_annual_balances,
+    get_annual_balance
+)
 from ..models import Transaction
 
 
@@ -43,7 +47,7 @@ class GetBalancesActionTest(TestCase):
             ]
         )
 
-        balances = get_balances(2021)
+        balances = get_annual_balances(2021)
 
         self.assertEqual(len(balances), 2)
 
@@ -55,7 +59,7 @@ class GetBalancesActionTest(TestCase):
             ]
         )
 
-        balances = get_balances(2020)
+        balances = get_annual_balances(2020)
 
         self.assertEqual(len(balances), 0)
 
@@ -71,7 +75,7 @@ class GetBalanceActionTest(TestCase):
             ]
         )
 
-        balance = get_balance(account=1, year=2021)
+        balance = get_annual_balance(account=1, year=2021)
 
         self.assertEqual(balance[0]['balance'], 10)
 
@@ -83,6 +87,6 @@ class GetBalanceActionTest(TestCase):
             ]
         )
 
-        balance = get_balance(account=1)
+        balance = get_annual_balance(account=1)
 
         self.assertEqual(balance[0]['balance'], 0)
