@@ -4,8 +4,9 @@ from django.test import TestCase
 
 from ..actions import (
     create_transactions,
-    get_annual_balances,
     get_annual_balance,
+    get_annual_balances,
+    get_monthly_balances,
 )
 from ..models import Transaction
 
@@ -36,7 +37,7 @@ class CreateTransactionsActionTest(TestCase):
         self.assertEqual(len(transactions), 0)
 
 
-class GetBalancesActionTest(TestCase):
+class GetAnnualBalancesActionTest(TestCase):
     def test_multiple_balances_are_returned_when_multiple_accounts_registered(
         self,
     ):
@@ -64,7 +65,7 @@ class GetBalancesActionTest(TestCase):
         self.assertEqual(len(balances), 0)
 
 
-class GetBalanceActionTest(TestCase):
+class GetAnnualBalanceActionTest(TestCase):
     def test_balance_is_calculated_right_for_one_account_and_specific_year(
         self,
     ):
@@ -90,3 +91,21 @@ class GetBalanceActionTest(TestCase):
         balance = get_annual_balance(account=1)
 
         self.assertEqual(balance[0]['balance'], 0)
+
+
+class GetMonthlyBalances(TestCase):
+    def test_multiple_balances_are_returned_when_multiple_accounts_registered(
+        self,
+    ):
+        Transaction.objects.bulk_create(
+            [
+                Transaction(date=date(2021, 1, 1), account=1, amount=10),
+                Transaction(date=date(2021, 2, 1), account=1, amount=-10),
+                Transaction(date=date(2021, 1, 1), account=2, amount=20),
+                Transaction(date=date(2021, 1, 2), account=2, amount=20),
+            ]
+        )
+
+        balances = get_monthly_balances()
+
+        self.assertEqual(len(balances), 3)
