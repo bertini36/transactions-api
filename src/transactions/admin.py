@@ -1,10 +1,10 @@
 import io
-from csv import reader
 
 from django.contrib import admin, messages
 
 from .actions import create_transactions
 from .models import Transaction, UploadedCSVFile
+from .utils import get_raw_transactions_from_read_obj
 
 
 @admin.register(Transaction)
@@ -19,14 +19,12 @@ class UploadedCSVFileAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.filename = obj.file.name
-        raw_transactions = io.StringIO(obj.file.read().decode('utf-8'))
-        csv_reader = reader(raw_transactions)
-        next(csv_reader)  # Ignore header
-        raw_transactions = list(csv_reader)
+        read_obj = io.StringIO(obj.file.read().decode('utf-8'))
+        raw_transactions = get_raw_transactions_from_read_obj(read_obj)
         transactions = create_transactions(raw_transactions)
         messages.add_message(
             request,
             messages.SUCCESS,
-            f'{len(transactions)} transactions have been registered'
+            f'{len(transactions)} transactions have been registered',
         )
-        obj.save()
+        super().save_model(request, obj, form, change)
