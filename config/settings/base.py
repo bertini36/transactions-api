@@ -160,7 +160,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-DEFAULT_CHAR_FIELD_LENGTH = 100
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # THIRD PARTY APPLICATIONS
 # ******************************************************************************
