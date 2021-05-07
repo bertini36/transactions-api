@@ -2,6 +2,8 @@
 Small API that allows to register transactions in order to obtain account
 balances.
 
+Statement: https://github.com/abacum-io/abacum-recruitment-test/blob/master/backed-python/test-python-backend-engineer.md
+
 ## 🚀 Environment Setup
 
 ### 🐳 Required tools
@@ -25,6 +27,7 @@ or from
 ### Transactions queries
 
 * Get a full year balance by account: http://127.0.0.1/balances/all/2020/
+* Get a full year balance for a specific account: http://127.0.0.1/balances/10000000/2020/
 
 ### ✅ Tests execution
 
