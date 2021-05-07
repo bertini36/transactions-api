@@ -42,6 +42,10 @@ update-deps: ## 📥 Update requirements files with last packages versions
 	@echo "📥 Updating dependencies"
 	@docker-compose run --rm --entrypoint sh transactions-api -c "pip-compile /code/requirements/dev.in && pip-compile /code/requirements/prod.in"
 
+test: ## 🏃 Run tests
+	@echo "🏃‍ Running tests"
+	@docker-compose run --rm --entrypoint sh transactions-api -c "pytest $(args)"
+
 lint: ## 🔦 Lint code
 	@echo "🔦 Linting code"
 	@docker-compose run --rm --entrypoint sh transactions-api -c "black /code/ -t py38 --line-length 80 --skip-string-normalization"
