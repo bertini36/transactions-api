@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    # Third party apps
+    'rest_framework',
     # Own apps
     'src.transactions',
 ]

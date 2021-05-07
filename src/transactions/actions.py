@@ -25,3 +25,8 @@ def create_transactions(raw_transactions: List[List]) -> QuerySet:
         )
     transactions = Transaction.objects.bulk_create(transactions)
     return transactions
+
+
+def get_balances_by_account():
+    balances_by_account = Transaction.objects.account_balances()
+    return balances_by_account
