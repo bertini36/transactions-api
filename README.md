@@ -27,8 +27,9 @@ or from
 
 ### Transactions queries
 
-* Get a full year balance by account: http://127.0.0.1/balances/all/2020/
-* Get a full year balance for a specific account: http://127.0.0.1/balances/10000000/2020/
+* Get a full year balance by account: http://127.0.0.1/annual/balances/all/2020/
+* Get a full year balance for a specific account: http://127.0.0.1/annual/balances/10000000/2020/
+* Get monthly balances by account : http://127.0.0.1/monthly/balances/all/
 
 ### ✅ Tests execution
 
