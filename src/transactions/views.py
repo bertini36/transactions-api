@@ -6,6 +6,7 @@ from .actions import (
     get_annual_balance,
     get_annual_balances,
     get_monthly_balances,
+    get_monthly_balance,
 )
 
 
@@ -26,8 +27,10 @@ def get_account_annual_balance_view(
 @api_view(['GET'])
 def get_monthly_balances_view(request: Request) -> Response:
     balances = get_monthly_balances()
-    balances = [
-        {k: v for k, v in balance.items() if k != 'date__month'}
-        for balance in balances
-    ]
+    return Response(balances)
+
+
+@api_view(['GET'])
+def get_account_monthly_balances_view(request: Request, account: int) -> Response:
+    balances = get_monthly_balance(account)
     return Response(balances)

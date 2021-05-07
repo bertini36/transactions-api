@@ -4,6 +4,7 @@ from typing import List
 from django.db.models import QuerySet
 
 from .models import Transaction
+from .utils import delete_key
 
 
 def create_transactions(raw_transactions: List[List]) -> QuerySet:
@@ -39,4 +40,11 @@ def get_annual_balance(account: int, year: int = None) -> List[dict]:
 
 def get_monthly_balances() -> List[dict]:
     balances = Transaction.objects.monthly_balance()
+    balances = delete_key(balances, 'date__month')
+    return list(balances)
+
+
+def get_monthly_balance(account: int) -> List[dict]:
+    balances = Transaction.objects.monthly_balance(account=account)
+    balances = delete_key(balances, 'date__month')
     return list(balances)

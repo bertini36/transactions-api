@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
     get_account_annual_balance_view,
     get_annual_balances_view,
+    get_account_monthly_balances_view,
     get_monthly_balances_view,
 )
 
@@ -23,5 +24,10 @@ urlpatterns = [
         r'monthly/balances/all/',
         get_monthly_balances_view,
         name='get-monthly-balances',
+    ),
+    path(
+        r'monthly/balances/<int:account>/',
+        get_account_monthly_balances_view,
+        name='get-account-monthly-balances',
     ),
 ]
