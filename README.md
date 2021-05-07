@@ -33,6 +33,10 @@ or from
 
 - Run tests: `make tests`
 
+### 🔦 Lint
+
+- Run lint: `make lint`
+
 ### 🤔 Extra commands 
 
 - Check `Makefile` to know all available commands 
