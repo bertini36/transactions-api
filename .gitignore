@@ -12,3 +12,5 @@
 .cache
 .pytest_cache
 results.xml
+
+staticfiles/*
