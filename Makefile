@@ -44,7 +44,7 @@ update-deps: ## 📥 Update requirements files with last packages versions
 
 test: ## 🏃 Run tests
 	@echo "🏃‍ Running tests"
-	@docker-compose run --rm --entrypoint sh transactions-api -c "pytest $(args)"
+	@docker-compose run --rm --entrypoint sh transactions-api -c "export DJANGO_SETTINGS_MODULE=config.settings.test && pytest $(args)"
 
 lint: ## 🔦 Lint code
 	@echo "🔦 Linting code"
