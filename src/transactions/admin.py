@@ -1,10 +1,10 @@
 import io
 from csv import reader
 
-from django.contrib import admin
-from django.contrib import messages
+from django.contrib import admin, messages
+
 from .actions import create_transactions
-from .models import Transaction, UploadedFile
+from .models import Transaction, UploadedCSVFile
 
 
 @admin.register(Transaction)
@@ -12,8 +12,8 @@ class TransactionAdmin(admin.ModelAdmin):
     list_display = ('date', 'account', 'amount')
 
 
-@admin.register(UploadedFile)
-class UploadedFileAdmin(admin.ModelAdmin):
+@admin.register(UploadedCSVFile)
+class UploadedCSVFileAdmin(admin.ModelAdmin):
     fields = ('file',)
     list_display = ('filename',)
 

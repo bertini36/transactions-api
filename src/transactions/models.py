@@ -15,7 +15,7 @@ class Transaction(models.Model):
         db_table = 'transactions'
 
 
-class UploadedFile(models.Model):
+class UploadedCSVFile(models.Model):
     filename = models.CharField(max_length=100)
     file = models.FileField(upload_to='files/%Y/%m/%d')
 
@@ -23,5 +23,5 @@ class UploadedFile(models.Model):
         return self.filename
 
     class Meta:
-        verbose_name = 'uploaded file'
-        verbose_name_plural = 'uploaded files'
+        verbose_name = 'uploaded CSV file'
+        verbose_name_plural = 'uploaded CSV files'
