@@ -1,8 +1,19 @@
-# bertini36/transactions-api 💰
-Small API that allows to register transactions in order to obtain account
-balances.
+[![Github actions](https://github.com/bertini36/transactions-api/workflows/test/badge.svg)](https://github.com/bertini36/transactions-api/workflows/test/badge.svg)
 
-Statement: https://github.com/abacum-io/abacum-recruitment-test/blob/master/backed-python/test-python-backend-engineer.md
+<h3 align="center">
+    bertini36/transactions-api 💰
+</h3>
+<p align="center">
+  <a href="#-environment-setup" target="_blank">
+    Installation
+  </a>&nbsp;&nbsp;•&nbsp;
+  <a href="Makefile" target="_blank">
+    Commands
+  </a>
+</p>
+<p align="center">
+    Small API that allows to register transactions in order to obtain account balances.
+</p>
 
 ## 🚀 Environment Setup
 
@@ -44,6 +55,6 @@ or from
 
 ### 🤔 Extra commands 
 
-- Check `Makefile` to know all available commands 
+- Check <a href="Makefile" target="_blank">Makefile</a> to know all available commands 
 
 <p align="center">&mdash; Built with :heart: from Mallorca &mdash;</p>
