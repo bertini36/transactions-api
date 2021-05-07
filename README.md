@@ -1,4 +1,4 @@
-[![Github actions](https://github.com/bertini36/transactions-api/workflows/test/badge.svg)](https://github.com/bertini36/transactions-api/workflows/test/badge.svg)
+[![Github actions](https://github.com/bertini36/transactions-api/actions/workflows/test.yml/badge.svg)](https://github.com/bertini36/transactions-api/actions/workflows/test.yml/badge.svg)
 
 <h3 align="center">
     bertini36/transactions-api 💰
