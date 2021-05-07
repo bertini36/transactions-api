@@ -13,3 +13,15 @@ class Transaction(models.Model):
         verbose_name = 'transaction'
         verbose_name_plural = 'transactions'
         db_table = 'transactions'
+
+
+class UploadedFile(models.Model):
+    filename = models.CharField(max_length=100)
+    file = models.FileField(upload_to='files/%Y/%m/%d')
+
+    def __str__(self) -> str:
+        return self.filename
+
+    class Meta:
+        verbose_name = 'uploaded file'
+        verbose_name_plural = 'uploaded files'
