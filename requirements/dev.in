@@ -5,3 +5,4 @@ git+git://github.com/psf/black
 ipython
 django-extensions
 django-debug-toolbar
+pytest-django
