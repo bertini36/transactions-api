@@ -27,12 +27,13 @@ or from
 
 ### Transactions queries
 
-* Get a full year balance by account: http://127.0.0.1/annual/balances/all/2020/
+* Get a full year balance by account: http://127.0.0.1/annual/balances/2020/
 * Get a full year balance for a specific account: http://127.0.0.1/annual/balances/10000000/2020/
-* Get monthly balances by account: http://127.0.0.1/monthly/balances/all/
-* Get monthly balance for a specific account: http://127.0.0.1/monthly/balances/10000000/
-* Get the monthly balance for a specific month by account: 
-* Get the monthly balance for a specific month and a specific account: http://127.0.0.1/monthly/balances/10000000/2020/3/
+* Get monthly balances by account: http://127.0.0.1/monthly/balances/
+* Get monthly balance for a specific account: http://127.0.0.1/monthly/balances/12101200/
+* Get the monthly balance for a specific month by account: http://127.0.0.1/monthly/balances/2020/4/
+* Get the monthly balance for a specific month and a specific account: http://127.0.0.1/monthly/balances/12101200/2020/4/
+
 ### ✅ Tests execution
 
 - Run tests: `make tests`
