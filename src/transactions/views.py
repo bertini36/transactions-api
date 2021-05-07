@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from .actions import (
+from .queries import (
     get_annual_balances,
     get_monthly_balances,
 )
