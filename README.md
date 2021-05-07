@@ -16,11 +16,13 @@ balances.
 * Create the database: `make migrate`
 * Run the server: `make up`
 
-### Commands
+### Transactions registration
 
 * `make load-transactions-csv [args="--csv-file 'path/to/file.csv'"]`
+or from
+* http://127.0.0.1/admin/transactions/uploadedcsvfile/add/
 
-### 👩‍💻 API endpoints
+### Transactions queries
 TODO
 
 ### ✅ Tests execution
