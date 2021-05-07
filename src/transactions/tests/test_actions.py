@@ -100,6 +100,20 @@ class GetMonthlyBalances(TestCase):
         Transaction.objects.bulk_create(
             [
                 Transaction(date=date(2021, 1, 1), account=1, amount=10),
+                Transaction(date=date(2021, 1, 1), account=2, amount=20),
+            ]
+        )
+
+        balances = get_monthly_balances()
+
+        self.assertEqual(len(balances), 2)
+
+
+class GetMonthlyBalance(TestCase):
+    def test_account_monthly_balances_are_calculated_right(self):
+        Transaction.objects.bulk_create(
+            [
+                Transaction(date=date(2021, 1, 1), account=1, amount=10),
                 Transaction(date=date(2021, 2, 1), account=1, amount=-10),
                 Transaction(date=date(2021, 1, 1), account=2, amount=20),
                 Transaction(date=date(2021, 1, 2), account=2, amount=20),
@@ -109,3 +123,6 @@ class GetMonthlyBalances(TestCase):
         balances = get_monthly_balances()
 
         self.assertEqual(len(balances), 3)
+        self.assertEqual(balances[0]['balance'], 10)
+        self.assertEqual(balances[1]['balance'], -10)
+        self.assertEqual(balances[2]['balance'], 40)
