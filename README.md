@@ -16,6 +16,7 @@ Statement: https://github.com/abacum-io/abacum-recruitment-test/blob/master/back
 
 * Install all the dependencies: `make build`
 * Create the database: `make migrate`
+* Create user: `make createsuperuser`
 * Run the server: `make up`
 
 ### Transactions registration
